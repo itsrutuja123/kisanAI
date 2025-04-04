@@ -1,18 +1,30 @@
 
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Menu, X, Leaf, User, Home, BarChart2, HelpCircle, Info, ShoppingBag, Droplets } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 // This would be replaced with actual auth logic in a complete implementation
 const useAuth = () => {
-  // Simulating auth state - replace with actual auth logic later
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // Get auth state from localStorage to persist across page refreshes
+  const [isLoggedIn, setIsLoggedIn] = useState(() => {
+    return localStorage.getItem('isLoggedIn') === 'true';
+  });
+  
+  const login = () => {
+    localStorage.setItem('isLoggedIn', 'true');
+    setIsLoggedIn(true);
+  };
+  
+  const logout = () => {
+    localStorage.setItem('isLoggedIn', 'false');
+    setIsLoggedIn(false);
+  };
   
   return {
     isLoggedIn,
-    login: () => setIsLoggedIn(true),
-    logout: () => setIsLoggedIn(false),
+    login,
+    logout,
     user: isLoggedIn ? { name: 'Farmer' } : null
   };
 };
@@ -20,6 +32,7 @@ const useAuth = () => {
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isLoggedIn, login, logout, user } = useAuth();
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -28,8 +41,15 @@ const Navbar = () => {
   // Handle login for demo purposes
   const handleLoginClick = () => {
     login();
-    // Navigate to dashboard (in a real app, this would be handled by proper routing)
-    window.location.href = '/dashboard';
+    // Navigate to dashboard
+    navigate('/dashboard');
+  };
+
+  // Handle logout
+  const handleLogoutClick = () => {
+    logout();
+    // Navigate to home page
+    navigate('/');
   };
 
   // Define navigation links based on authentication status
@@ -86,7 +106,7 @@ const Navbar = () => {
                 </Link>
                 <Button 
                   className="kisan-btn-primary px-6 py-2"
-                  onClick={logout}
+                  onClick={handleLogoutClick}
                 >
                   Logout
                 </Button>
@@ -149,7 +169,7 @@ const Navbar = () => {
                   <Button 
                     className="kisan-btn-primary py-2 w-full"
                     onClick={() => {
-                      logout();
+                      handleLogoutClick();
                       setIsMenuOpen(false);
                     }}
                   >
