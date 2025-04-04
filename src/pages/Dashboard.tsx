@@ -5,7 +5,7 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import DashboardOverview from '@/components/dashboard/DashboardOverview';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Bell, Calendar, Home, LineChart, Plant, Droplets, ShoppingBag, User } from 'lucide-react';
+import { Bell, Calendar, Home, LineChart, Leaf, Droplets, ShoppingBag, User } from 'lucide-react';
 
 const Dashboard = () => {
   // This is just a placeholder - in a real app, these would be fetched from your backend
@@ -14,7 +14,7 @@ const Dashboard = () => {
   // Dashboard feature navigation items
   const dashboardFeatures = [
     {
-      icon: <Plant className="h-10 w-10 text-kisan-green" />,
+      icon: <Leaf className="h-10 w-10 text-kisan-green" />,
       title: "Crop Recommendation",
       description: "Get personalized crop suggestions based on soil analysis",
       link: "/crop-recommendation"

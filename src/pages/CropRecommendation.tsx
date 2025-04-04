@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -7,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Slider } from '@/components/ui/slider';
-import { Upload, Camera, AlertCircle, Thermometer, Droplets, Watch, Shovel } from 'lucide-react';
+import { Upload, Camera, AlertCircle, Thermometer, Droplets, Watch, Shovel, Leaf } from 'lucide-react';
 import { toast } from '@/components/ui/use-toast';
 
 const CropRecommendation = () => {
@@ -476,7 +475,7 @@ const CropRecommendation = () => {
                       <div className="relative flex justify-between">
                         {[
                           { stage: "Planting", icon: <Shovel className="h-6 w-6" />, days: "Day 1", note: "Sow seeds 3-5cm deep" },
-                          { stage: "Germination", icon: <Sprout className="h-6 w-6" />, days: "Day 7-10", note: "First shoots appear" },
+                          { stage: "Germination", icon: <Leaf className="h-6 w-6" />, days: "Day 7-10", note: "First shoots appear" },
                           { stage: "Growth", icon: <Droplets className="h-6 w-6" />, days: "Day 30-60", note: "Regular watering needed" },
                           { stage: "Flowering", icon: <Thermometer className="h-6 w-6" />, days: "Day 90-100", note: "Monitor temperature" },
                           { stage: "Harvest", icon: <Watch className="h-6 w-6" />, days: "Day 120-150", note: "Ready to harvest" },
