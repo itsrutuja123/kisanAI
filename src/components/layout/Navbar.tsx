@@ -1,14 +1,35 @@
 
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, Leaf } from 'lucide-react';
+import { Menu, X, Leaf, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+
+// This would be replaced with actual auth logic in a complete implementation
+const useAuth = () => {
+  // Simulating auth state - replace with actual auth logic later
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  
+  return {
+    isLoggedIn,
+    login: () => setIsLoggedIn(true),
+    logout: () => setIsLoggedIn(false),
+    user: isLoggedIn ? { name: 'Farmer' } : null
+  };
+};
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isLoggedIn, login, logout, user } = useAuth();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  // Handle login for demo purposes
+  const handleLoginClick = () => {
+    login();
+    // Navigate to dashboard (in a real app, this would be handled by proper routing)
+    window.location.href = '/dashboard';
   };
 
   return (
@@ -25,13 +46,43 @@ const Navbar = () => {
             <Link to="/" className="text-foreground hover:text-kisan-green transition-colors">
               Home
             </Link>
-            <Link to="/analysis" className="text-foreground hover:text-kisan-green transition-colors">
-              Analysis
-            </Link>
-            <Link to="/dashboard" className="text-foreground hover:text-kisan-green transition-colors">
-              Dashboard
-            </Link>
-            <Button className="kisan-btn-primary px-6 py-2">Get Started</Button>
+            
+            {isLoggedIn ? (
+              // Logged in menu options
+              <>
+                <Link to="/dashboard" className="text-foreground hover:text-kisan-green transition-colors">
+                  Dashboard
+                </Link>
+                <div className="flex items-center gap-4">
+                  <Link to="/profile" className="flex items-center gap-2 text-foreground hover:text-kisan-green transition-colors">
+                    <User className="h-4 w-4" />
+                    <span>{user?.name}</span>
+                  </Link>
+                  <Button 
+                    className="kisan-btn-primary px-6 py-2"
+                    onClick={logout}
+                  >
+                    Logout
+                  </Button>
+                </div>
+              </>
+            ) : (
+              // Public menu options
+              <>
+                <Link to="/about" className="text-foreground hover:text-kisan-green transition-colors">
+                  About
+                </Link>
+                <Link to="/support" className="text-foreground hover:text-kisan-green transition-colors">
+                  Support
+                </Link>
+                <Button 
+                  className="kisan-btn-primary px-6 py-2"
+                  onClick={handleLoginClick}
+                >
+                  Sign In
+                </Button>
+              </>
+            )}
           </div>
 
           {/* Mobile menu button */}
@@ -62,21 +113,62 @@ const Navbar = () => {
               >
                 Home
               </Link>
-              <Link
-                to="/analysis"
-                className="text-foreground hover:text-kisan-green transition-colors py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Analysis
-              </Link>
-              <Link
-                to="/dashboard"
-                className="text-foreground hover:text-kisan-green transition-colors py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Dashboard
-              </Link>
-              <Button className="kisan-btn-primary py-2 w-full">Get Started</Button>
+              
+              {isLoggedIn ? (
+                // Logged in mobile menu
+                <>
+                  <Link
+                    to="/dashboard"
+                    className="text-foreground hover:text-kisan-green transition-colors py-2"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Dashboard
+                  </Link>
+                  <Link
+                    to="/profile"
+                    className="text-foreground hover:text-kisan-green transition-colors py-2"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Profile
+                  </Link>
+                  <Button 
+                    className="kisan-btn-primary py-2 w-full"
+                    onClick={() => {
+                      logout();
+                      setIsMenuOpen(false);
+                    }}
+                  >
+                    Logout
+                  </Button>
+                </>
+              ) : (
+                // Public mobile menu
+                <>
+                  <Link
+                    to="/about"
+                    className="text-foreground hover:text-kisan-green transition-colors py-2"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    About
+                  </Link>
+                  <Link
+                    to="/support"
+                    className="text-foreground hover:text-kisan-green transition-colors py-2"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Support
+                  </Link>
+                  <Button 
+                    className="kisan-btn-primary py-2 w-full"
+                    onClick={() => {
+                      handleLoginClick();
+                      setIsMenuOpen(false);
+                    }}
+                  >
+                    Sign In
+                  </Button>
+                </>
+              )}
             </div>
           </div>
         )}
