@@ -1,5 +1,4 @@
-
-import { Calendar, Droplet, LineChart, Seedling, ShoppingBag } from 'lucide-react';
+import { Calendar, Droplet, LineChart, Sprout, ShoppingBag } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 
@@ -89,7 +88,7 @@ const DashboardOverview = () => {
             <div className="flex justify-between items-center p-3 border rounded-lg">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-green-100 rounded-full">
-                  <Seedling className="h-5 w-5 text-green-500" />
+                  <Sprout className="h-5 w-5 text-green-500" />
                 </div>
                 <div>
                   <p className="font-medium">Apply Fertilizer to Wheat</p>

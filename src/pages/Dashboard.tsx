@@ -26,7 +26,7 @@ const Dashboard = () => {
                 <CardTitle className="text-sm font-medium text-muted-foreground">
                   Active Crops
                 </CardTitle>
-                <Seedling className="h-4 w-4 text-kisan-green" />
+                <Sprout className="h-4 w-4 text-kisan-green" />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">4</div>
@@ -72,7 +72,7 @@ const Dashboard = () => {
                 Overview
               </TabsTrigger>
               <TabsTrigger value="crops">
-                <Seedling className="h-4 w-4 mr-2" />
+                <Sprout className="h-4 w-4 mr-2" />
                 Crops
               </TabsTrigger>
               <TabsTrigger value="market">
@@ -145,6 +145,6 @@ const Dashboard = () => {
 };
 
 // Import necessary components that are used in this file
-import { Seedling, Cloud } from 'lucide-react';
+import { Sprout, Cloud } from 'lucide-react';
 
 export default Dashboard;
