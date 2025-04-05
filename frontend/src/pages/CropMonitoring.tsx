@@ -30,7 +30,7 @@ const CropMonitoring = () => {
                     progress: 45,
                     planted: "15 days ago",
                     nextAction: "Apply fertilizer in 2 days",
-                    image: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?q=80&w=200"
+                    image: "images/wheat.avif"
                   },
                   {
                     crop: "Rice",
@@ -38,7 +38,7 @@ const CropMonitoring = () => {
                     progress: 20,
                     planted: "10 days ago",
                     nextAction: "Field inspection tomorrow",
-                    image: "https://images.unsplash.com/photo-1536054935345-9aec9136553c?q=80&w=200"
+                    image: "images/riceplant.jpeg"
                   },
                   {
                     crop: "Mustard",
@@ -46,7 +46,7 @@ const CropMonitoring = () => {
                     progress: 70,
                     planted: "40 days ago",
                     nextAction: "Pest control in 3 days",
-                    image: "https://images.unsplash.com/photo-1594639676866-10a9bfd99f3c?q=80&w=200"
+                    image: "images/mustard1.jpeg"
                   }
                 ].map((crop, index) => (
                   <Card key={index} className="overflow-hidden">

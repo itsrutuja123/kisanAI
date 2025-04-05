@@ -349,7 +349,7 @@ const CropRecommendation = () => {
                         <>
                           <div className="border rounded-lg overflow-hidden">
                             <img 
-                              src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?q=80&w=500" 
+                              src="images/wheat.avif" 
                               alt="Wheat"
                               className="w-full h-40 object-cover"
                             />
@@ -360,7 +360,7 @@ const CropRecommendation = () => {
                           </div>
                           <div className="border rounded-lg overflow-hidden">
                             <img 
-                              src="https://images.unsplash.com/photo-1467020341876-6f79b99c75e4?q=80&w=500" 
+                              src="images/mustard.webp" 
                               alt="Mustard"
                               className="w-full h-40 object-cover"
                             />
@@ -371,7 +371,7 @@ const CropRecommendation = () => {
                           </div>
                           <div className="border rounded-lg overflow-hidden">
                             <img 
-                              src="https://images.unsplash.com/photo-1593834737573-30772f4b2b8f?q=80&w=500" 
+                              src="images/chickpea.webp" 
                               alt="Chickpeas"
                               className="w-full h-40 object-cover"
                             />
@@ -387,7 +387,7 @@ const CropRecommendation = () => {
                         <>
                           <div className="border rounded-lg overflow-hidden">
                             <img 
-                              src="https://images.unsplash.com/photo-1546750561-8af5ed10a1e0?q=80&w=500" 
+                              src="images/cotton.jpg" 
                               alt="Cotton"
                               className="w-full h-40 object-cover"
                             />
@@ -398,7 +398,7 @@ const CropRecommendation = () => {
                           </div>
                           <div className="border rounded-lg overflow-hidden">
                             <img 
-                              src="https://images.unsplash.com/photo-1550828520-4cb496926fc9?q=80&w=500" 
+                              src="images/sourgum.jpeg" 
                               alt="Sorghum"
                               className="w-full h-40 object-cover"
                             />
@@ -409,7 +409,7 @@ const CropRecommendation = () => {
                           </div>
                           <div className="border rounded-lg overflow-hidden">
                             <img 
-                              src="https://images.unsplash.com/photo-1603352525945-e99744c29c0c?q=80&w=500" 
+                              src="images/sunflower.jpg" 
                               alt="Sunflower"
                               className="w-full h-40 object-cover"
                             />
@@ -425,7 +425,7 @@ const CropRecommendation = () => {
                         <>
                           <div className="border rounded-lg overflow-hidden">
                             <img 
-                              src="https://images.unsplash.com/photo-1536054935345-9aec9136553c?q=80&w=500" 
+                              src="images/rice.webp" 
                               alt="Rice"
                               className="w-full h-40 object-cover"
                             />
@@ -436,7 +436,7 @@ const CropRecommendation = () => {
                           </div>
                           <div className="border rounded-lg overflow-hidden">
                             <img 
-                              src="https://images.unsplash.com/photo-1559825481-12a05cc00344?q=80&w=500" 
+                              src="https://images.unsplash.com/photo-1559825481-12a05cc00344?q=80&w=50" 
                               alt="Maize"
                               className="w-full h-40 object-cover"
                             />
@@ -447,7 +447,7 @@ const CropRecommendation = () => {
                           </div>
                           <div className="border rounded-lg overflow-hidden">
                             <img 
-                              src="https://images.unsplash.com/photo-1550745165-e27371e29f95?q=80&w=500" 
+                              src="images/soyabean.webp" 
                               alt="Soybeans"
                               className="w-full h-40 object-cover"
                             />

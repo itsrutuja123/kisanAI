@@ -25,7 +25,7 @@ const DiseaseDetection = () => {
   const handleCameraCapture = () => {
     toast({
       title: "Camera Access",
-      description: "In a real app, this would open your device camera.",
+      
     });
   };
   
@@ -260,19 +260,19 @@ const DiseaseDetection = () => {
                       name: "Rice Blast",
                       affectedArea: "Northern Districts",
                       risk: "High",
-                      image: "https://images.unsplash.com/photo-1602094777609-99adce95ee41?q=80&w=300"
+                      image: "images/riceblast.webp"
                     },
                     {
                       name: "Tomato Leaf Curl",
                       affectedArea: "Southern Region",
                       risk: "Medium",
-                      image: "https://images.unsplash.com/photo-1592921431216-ae18b45cf7ea?q=80&w=300"
+                      image: "images/powderymil.jpg"
                     },
                     {
                       name: "Wheat Powdery Mildew",
                       affectedArea: "Eastern Districts",
                       risk: "Low",
-                      image: "https://images.unsplash.com/photo-1622478913853-a8e98fae014e?q=80&w=300"
+                      image: "images/tomatodisease.webp"
                     }
                   ].map((disease, index) => (
                     <div key={index} className="border rounded-lg overflow-hidden">

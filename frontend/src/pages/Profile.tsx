@@ -55,7 +55,7 @@ const Profile = () => {
     // In a real app, this would save data to the backend
     toast({
       title: "Profile Updated",
-      description: "Your profile changes have been saved successfully.",
+      
     });
   };
 
@@ -72,16 +72,23 @@ const Profile = () => {
               <div>
                 <Card>
                   <CardContent className="pt-6 flex flex-col items-center">
-                    <div className="bg-kisan-green/10 p-6 rounded-full mb-4">
-                      <User className="h-16 w-16 text-kisan-green" />
-                    </div>
+                  <div className="w-28 h-28 rounded-full overflow-hidden mb-4 border-2 border-kisan-green shadow">
+                  <img 
+                    src="/images/rajesh.jpeg" 
+                    alt="Profile Image" 
+                    className="w-full h-full object-cover"
+                  />
+                  </div>    
                     <h2 className="text-xl font-bold text-center mb-1">{userData.name}</h2>
                     <p className="text-gray-500 text-center mb-6 flex items-center gap-1">
                       <MapPin className="h-4 w-4" />
                       {userData.address.split(',')[1]}
                     </p>
                     
-                    <Button variant="outline" className="w-full mb-2">
+                    <Button
+                      variant="default"
+                      className="w-full mb-2 font-semibold transition-transform transform hover:scale-105 hover:-translate-y-1"
+                    >
                       <LogOut className="h-4 w-4 mr-2" />
                       Sign Out
                     </Button>
