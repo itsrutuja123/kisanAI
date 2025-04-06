@@ -101,5 +101,13 @@ Farmers often struggle to get real-time insights on soil conditions, crop select
 ### Clone the Repository
 
 ```bash
-git clone
+git clone https://github.com/itsrutuja123/kisanai-agri-vista.git
 cd kisanAI
+cd kisanAI-agri-vista
+##For Frontend :
+cd frontend
+npm run dev
+##For Backend
+cd backend
+npm start
+
