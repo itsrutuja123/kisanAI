@@ -1,4 +1,11 @@
 {
+  "name": "kisanai-backend",
+  "version": "1.0.0",
+  "description": "Backend for KisanAI crop and disease prediction",
+  "main": "app.js",
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
     "axios": "^1.8.4",
     "body-parser": "^2.2.0",

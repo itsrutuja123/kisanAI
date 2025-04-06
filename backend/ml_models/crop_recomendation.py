@@ -47,29 +47,32 @@ class CropRecommender:
         self.model = saved['model']
         self.scaler = saved['scaler']
 
-# Training data (example)
-training_data = {
-    'features': [
-        # moisture, temperature, soil_type_encoded, season_encoded
-        [70, 25, 0, 0],  # Clay, Summer
-        [60, 18, 0, 1],  # Clay, Winter
-        [80, 30, 1, 2],  # Sandy, Rainy
-        # Add more training examples...
-    ],
-    'labels': [
-        'Wheat',
-        'Rice',
-        'Maize',
-        # Add corresponding labels...
-    ]
-}
+# Note: The training code below is commented out since it should be run separately,
+# not every time the module is imported
 
-# Initialize and train model
-recommender = CropRecommender()
-recommender.train(
-    np.array(training_data['features']),
-    np.array(training_data['labels'])
-)
+# # Training data (example)
+# training_data = {
+#     'features': [
+#         # moisture, temperature, soil_type_encoded, season_encoded
+#         [70, 25, 0, 0],  # Clay, Summer
+#         [60, 18, 0, 1],  # Clay, Winter
+#         [80, 30, 1, 2],  # Sandy, Rainy
+#         # Add more training examples...
+#     ],
+#     'labels': [
+#         'Wheat',
+#         'Rice',
+#         'Maize',
+#         # Add corresponding labels...
+#     ]
+# }
 
-# Save the trained model
-recommender.save_model('backend/ml_models/crop_model.joblib')
+# # Initialize and train model
+# recommender = CropRecommender()
+# recommender.train(
+#     np.array(training_data['features']),
+#     np.array(training_data['labels'])
+# )
+
+# # Save the trained model
+# recommender.save_model('crop_model.joblib')

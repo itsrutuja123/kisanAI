@@ -6,38 +6,91 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Camera, Upload, AlertCircle, Microscope } from 'lucide-react';
 import { toast } from '@/components/ui/use-toast';
+import axios from 'axios';
 
 const DiseaseDetection = () => {
   const [image, setImage] = useState<string | null>(null);
+  const [imageFile, setImageFile] = useState<File | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [diseaseResult, setDiseaseResult] = useState<any>(null);
   
-  // Handle image upload
+  // Handle image upload from gallery
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
+      setImageFile(file);
       setImage(URL.createObjectURL(file));
       setDiseaseResult(null);
+      
+      toast({
+        title: "Image Selected",
+        description: "Image has been successfully selected from gallery."
+      });
     }
   };
   
-  // Handle camera capture (in a real app, this would access device camera)
+  // Handle camera capture
   const handleCameraCapture = () => {
-    toast({
-      title: "Camera Access",
-      
-    });
+    // Create a hidden file input with camera source
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.capture = 'environment'; // Use 'environment' for back camera, 'user' for front camera
+    
+    input.onchange = (e: any) => {
+      if (e.target.files && e.target.files[0]) {
+        const file = e.target.files[0];
+        setImageFile(file);
+        setImage(URL.createObjectURL(file));
+        setDiseaseResult(null);
+        
+        toast({
+          title: "Photo Captured",
+          description: "Image has been successfully captured using camera."
+        });
+      }
+    };
+    
+    // Trigger the file input click
+    input.click();
   };
   
   // Analyze plant disease
-  const analyzePlant = () => {
-    if (!image) return;
+  const analyzePlant = async () => {
+    if (!image || !imageFile) return;
     
     setIsAnalyzing(true);
     
-    // Simulate API call delay
-    setTimeout(() => {
-      // Mock disease detection result
+    try {
+      // Create a form data object to send the image
+      const formData = new FormData();
+      formData.append('image', imageFile);
+      
+      // Send the image to the backend for analysis
+      // In a real implementation, this would call your Python model
+      // For now we'll use the mock endpoint provided in disease.js
+      const response = await axios.post('http://localhost:5000/api/disease/detect', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      
+      setDiseaseResult(response.data);
+      
+      toast({
+        title: "Analysis Complete",
+        description: "We've identified the plant disease.",
+      });
+    } catch (error) {
+      console.error('Error analyzing image:', error);
+      
+      toast({
+        title: "Analysis Failed",
+        description: "There was an error analyzing the image. Please try again.",
+        variant: "destructive"
+      });
+      
+      // Fallback to mock data for demo purposes
       setDiseaseResult({
         diseaseName: "Wheat Leaf Rust",
         scientificName: "Puccinia triticina",
@@ -68,14 +121,9 @@ const DiseaseDetection = () => {
           }
         ]
       });
-      
+    } finally {
       setIsAnalyzing(false);
-      
-      toast({
-        title: "Analysis Complete",
-        description: "We've identified the plant disease.",
-      });
-    }, 3000);
+    }
   };
   
   return (
@@ -128,13 +176,13 @@ const DiseaseDetection = () => {
                             <label htmlFor="plant-upload">
                               <Button type="button" variant="outline" className="w-full cursor-pointer">
                                 <Upload className="h-4 w-4 mr-2" />
-                                Upload Photo
+                                Take Photo
                               </Button>
                             </label>
                           </div>
                           <Button type="button" variant="outline" onClick={handleCameraCapture}>
                             <Camera className="h-4 w-4 mr-2" />
-                            Take Photo
+                            Upload Photo
                           </Button>
                         </div>
                       </div>
@@ -152,6 +200,7 @@ const DiseaseDetection = () => {
                             className="absolute top-2 right-2 bg-white/80"
                             onClick={() => {
                               setImage(null);
+                              setImageFile(null);
                               setDiseaseResult(null);
                             }}
                           >

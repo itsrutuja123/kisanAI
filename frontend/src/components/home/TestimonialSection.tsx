@@ -6,19 +6,19 @@ const testimonials = [
   {
     name: 'Rajesh Kumar',
     location: 'Punjab, India',
-    image: 'https://randomuser.me/api/portraits/men/32.jpg',
+    image: 'images/rajesh.jpeg',
     text: 'KisanAI helped me identify a disease in my wheat crop before it spread. The early detection saved me from a potential 40% loss in yield.',
   },
   {
     name: 'Anita Patel',
     location: 'Gujarat, India',
-    image: 'https://randomuser.me/api/portraits/women/44.jpg',
+    image: 'images/sunita.jpg',
     text: 'The crop recommendation feature suggested I try growing cumin, which was perfect for my soil. My profits increased by 30% compared to last year.',
   },
   {
     name: 'Suresh Reddy',
     location: 'Telangana, India',
-    image: 'https://randomuser.me/api/portraits/men/62.jpg',
+    image: 'images/arun.jpg',
     text: 'Market trend predictions helped me time my harvest perfectly. I sold my produce when prices were at their peak.',
   },
 ];
@@ -42,7 +42,7 @@ const TestimonialSection = () => {
             What Farmers Say about KisanAI?
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Hear from farmers who have transformed their agriculture practices with KisanAI.
+            Hear from farmers who have transformed their agriculture practices with KisanAI. Let their experience help you grow!
           </p>
         </div>
 

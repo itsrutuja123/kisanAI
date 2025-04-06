@@ -1,4 +1,5 @@
-import { Calendar, Droplet, LineChart, Sprout, ShoppingBag } from 'lucide-react';
+import { useState } from 'react';
+import { Calendar, Droplet, LineChart, Sprout, ShoppingBag, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 
@@ -9,14 +10,28 @@ const currentCrops = [
     stage: 'Growing',
     progress: 65,
     nextAction: 'Fertilize in 3 days',
-    imageUrl: 'https://images.unsplash.com/photo-1467803738586-46b7eb7b16a1?q=80&w=200',
+    imageUrl: 'images/wheat.avif',
   },
   {
     name: 'Tomatoes',
     stage: 'Fruiting',
     progress: 80,
     nextAction: 'Harvest in 10 days',
-    imageUrl: 'https://images.unsplash.com/photo-1592841200221-a6898f317bea?q=80&w=200',
+    imageUrl: 'images/tomato.webp',
+  },
+  {
+    name: 'Sunflower',
+    stage: 'Flowering',
+    progress: 70,
+    nextAction: 'Monitor for pests in 2 days',
+    imageUrl: 'images/sunflower.jpg', 
+  },
+  {
+    name: 'Rice',
+    stage: 'Seedling',
+    progress: 30,
+    nextAction: 'Apply fertilizer in 7 days',
+    imageUrl: 'images/rice.webp', 
   },
 ];
 
@@ -27,6 +42,18 @@ const marketTrends = [
 ];
 
 const DashboardOverview = () => {
+  const [showAllCrops, setShowAllCrops] = useState(false);
+  const [completedTasks, setCompletedTasks] = useState<{[key: string]: boolean}>({});
+  
+  const displayedCrops = showAllCrops ? currentCrops : currentCrops.slice(0, 2);
+  
+  const handleMarkDone = (taskId: string) => {
+    setCompletedTasks(prev => ({
+      ...prev,
+      [taskId]: true
+    }));
+  };
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
       {/* Left column - Current Crops */}
@@ -34,11 +61,17 @@ const DashboardOverview = () => {
         <div className="kisan-card p-6">
           <div className="flex justify-between items-center mb-6">
             <h3 className="text-xl font-semibold text-kisan-green-dark">Current Crops</h3>
-            <Button variant="outline" className="text-sm">View All</Button>
+            <Button 
+              variant="outline" 
+              className="text-sm"
+              onClick={() => setShowAllCrops(!showAllCrops)}
+            >
+              {showAllCrops ? 'Show Less' : 'View All'}
+            </Button>
           </div>
 
           <div className="space-y-6">
-            {currentCrops.map((crop, index) => (
+            {displayedCrops.map((crop, index) => (
               <div key={index} className="flex gap-4 items-center p-4 border rounded-lg hover:bg-gray-50 transition-colors">
                 <img
                   src={crop.imageUrl}
@@ -82,7 +115,19 @@ const DashboardOverview = () => {
                   <p className="text-xs text-muted-foreground">Today</p>
                 </div>
               </div>
-              <Button variant="outline" size="sm">Mark Done</Button>
+              {completedTasks['water-tomatoes'] ? (
+                <Button variant="outline" size="sm" className="bg-green-100 text-green-600 border-green-200">
+                  <Check className="h-4 w-4" />
+                </Button>
+              ) : (
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  onClick={() => handleMarkDone('water-tomatoes')}
+                >
+                  Mark Done
+                </Button>
+              )}
             </div>
             
             <div className="flex justify-between items-center p-3 border rounded-lg">
@@ -95,7 +140,19 @@ const DashboardOverview = () => {
                   <p className="text-xs text-muted-foreground">Tomorrow</p>
                 </div>
               </div>
-              <Button variant="outline" size="sm">Mark Done</Button>
+              {completedTasks['fertilize-wheat'] ? (
+                <Button variant="outline" size="sm" className="bg-green-100 text-green-600 border-green-200">
+                  <Check className="h-4 w-4" />
+                </Button>
+              ) : (
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  onClick={() => handleMarkDone('fertilize-wheat')}
+                >
+                  Mark Done
+                </Button>
+              )}
             </div>
             
             <div className="flex justify-between items-center p-3 border rounded-lg">
@@ -108,7 +165,19 @@ const DashboardOverview = () => {
                   <p className="text-xs text-muted-foreground">In 5 days</p>
                 </div>
               </div>
-              <Button variant="outline" size="sm">Mark Done</Button>
+              {completedTasks['buy-tomato-seeds'] ? (
+                <Button variant="outline" size="sm" className="bg-green-100 text-green-600 border-green-200">
+                  <Check className="h-4 w-4" />
+                </Button>
+              ) : (
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  onClick={() => handleMarkDone('buy-tomato-seeds')}
+                >
+                  Mark Done
+                </Button>
+              )}
             </div>
           </div>
         </div>
@@ -145,7 +214,7 @@ const DashboardOverview = () => {
           <div className="space-y-3">
             <div className="p-3 border rounded-lg flex gap-3">
               <img
-                src="https://images.unsplash.com/photo-1576398614391-6549a6ea9415?q=80&w=100"
+                src="images/wheatseeds.webp"
                 alt="Rice Seeds"
                 className="w-12 h-12 rounded object-cover"
               />
@@ -158,7 +227,7 @@ const DashboardOverview = () => {
             
             <div className="p-3 border rounded-lg flex gap-3">
               <img
-                src="https://images.unsplash.com/photo-1603665301175-57ba46f392ed?q=80&w=100"
+                src="images/cornseeds.jpg"
                 alt="Corn Seeds"
                 className="w-12 h-12 rounded object-cover"
               />

@@ -1,12 +1,21 @@
-
+import { useState } from 'react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Bell, Calendar, Droplets, Sun, Cloud, Wind, Sprout } from 'lucide-react';
+import { Bell, Calendar, Droplets, Sun, Cloud, Wind, Sprout, Check } from 'lucide-react';
 
 const CropMonitoring = () => {
+  const [completedTasks, setCompletedTasks] = useState<{[key: string]: boolean}>({});
+  
+  const handleMarkComplete = (taskId: string) => {
+    setCompletedTasks(prev => ({
+      ...prev,
+      [taskId]: true
+    }));
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -100,6 +109,7 @@ const CropMonitoring = () => {
                   <div className="space-y-4">
                     {[
                       {
+                        id: "npk-fertilizer",
                         task: "Apply NPK Fertilizer to Wheat",
                         date: "Tomorrow",
                         field: "North Field (5 acres)",
@@ -107,6 +117,7 @@ const CropMonitoring = () => {
                         icon: <Sprout className="h-5 w-5 text-green-500" />
                       },
                       {
+                        id: "irrigate-rice",
                         task: "Irrigate Rice Field",
                         date: "In 3 days",
                         field: "East Field (3 acres)",
@@ -114,6 +125,7 @@ const CropMonitoring = () => {
                         icon: <Droplets className="h-5 w-5 text-blue-500" />
                       },
                       {
+                        id: "mustard-inspection",
                         task: "Mustard Field Inspection",
                         date: "In 4 days",
                         field: "South Field (2 acres)",
@@ -121,6 +133,7 @@ const CropMonitoring = () => {
                         icon: <Bell className="h-5 w-5 text-amber-500" />
                       },
                       {
+                        id: "wheat-weed-control",
                         task: "Wheat Weed Control",
                         date: "In 5 days",
                         field: "North Field (5 acres)",
@@ -138,7 +151,19 @@ const CropMonitoring = () => {
                             <div className="text-sm text-gray-500">
                               {task.field} • {task.date}
                             </div>
-                            <Button size="sm" variant="ghost">Mark Complete</Button>
+                            {completedTasks[task.id] ? (
+                              <Button size="sm" variant="ghost" className="bg-green-100 text-green-600 border-green-200">
+                                <Check className="h-4 w-4" />
+                              </Button>
+                            ) : (
+                              <Button 
+                                size="sm" 
+                                variant="ghost" 
+                                onClick={() => handleMarkComplete(task.id)}
+                              >
+                                Mark Complete
+                              </Button>
+                            )}
                           </div>
                           <p className="text-xs text-gray-500 mt-1">{task.notes}</p>
                         </div>
