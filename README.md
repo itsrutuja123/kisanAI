@@ -34,7 +34,7 @@ Farmers often struggle to get real-time insights on soil conditions, crop select
 - **Weather Predictor**: Integrates real-time weather data to optimize irrigation and crop care.
 - **Vendor & Marketplace Agent**: Helps farmers find seeds, fertilizers, and buyers.
 
-### Technology Stack
+### Technology Stack:
 
 | Component                    | Technology                                          |
 | ---------------------------- | --------------------------------------------------- |
