@@ -2,7 +2,7 @@
 
 **KisanAI** is a cutting-edge AI-powered platform designed to address sustainability challenges in agriculture. Through a multi-agent system, the platform integrates farmers, weather stations, agricultural experts, and vendors to optimize farming practices, reduce environmental impact, and maximize profitability.
 
-## Problem Statement
+## Problem Statement:
 
 Agriculture faces major sustainability challenges such as:
 - Water scarcity
