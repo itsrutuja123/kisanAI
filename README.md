@@ -82,7 +82,7 @@ Farmers often struggle to get real-time insights on soil conditions, crop select
 - Recommends best practices for each phase of the crop lifecycle to ensure high yield and quality.
 
 
-## 🌍 Expected Impact
+## 🌍 Expected Impact:
 
 - **Increased Yield & Reduced Crop Loss**: Helps farmers optimize crop selection for better yields.
 - **Environmental Sustainability**: Reduces water and pesticide usage, promoting eco-friendly farming practices.
