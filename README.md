@@ -24,7 +24,7 @@ Farmers often struggle to get real-time insights on soil conditions, crop select
 - **Smart Notifications**: Provide timely alerts on watering, fertilizing, pest control, and other crop-care activities.
 - **Market Trends**: Show the current market prices and trends to help farmers sell their yield at maximum profit.
 
-## 🛠 System Architecture & Technology Stack
+## 🛠 System Architecture & Technology Stack:
 
 ### Multi-Agent Framework
 
