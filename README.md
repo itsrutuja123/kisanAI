@@ -26,7 +26,7 @@ Farmers often struggle to get real-time insights on soil conditions, crop select
 
 ## 🛠 System Architecture & Technology Stack:
 
-### Multi-Agent Framework
+### Multi-Agent Framework:
 
 - **Farmer Advisor**: Provides actionable insights based on land, crop preferences, and financial goals.
 - **Market Researcher**: Analyzes regional market trends, crop pricing, and demand forecasts.
