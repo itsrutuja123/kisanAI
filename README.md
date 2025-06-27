@@ -12,7 +12,7 @@ Agriculture faces major sustainability challenges such as:
 
 Farmers often struggle to get real-time insights on soil conditions, crop selection, disease management, and market pricing. **KisanAI** aims to solve these challenges by providing an all-in-one platform that supports data-driven farming practices.
 
-## 🎯 Project Objectives
+## 🎯 Project Objectives:
 
 - **AI-Driven Crop Recommendations**: Provide crop recommendations based on soil type, moisture, and weather data.
 - **Soil Image Analysis**: Classify soil texture and nutrient levels through image analysis.
