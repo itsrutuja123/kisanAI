@@ -98,9 +98,7 @@ Farmers often struggle to get real-time insights on soil conditions, crop select
 - **Node.js** (v14 or higher)
 - **MongoDB** (or use cloud database like MongoDB Atlas)
 
-### Clone the Repository
-
-```bash
+### Clone the Repository:
 git clone https://github.com/itsrutuja123/kisanai-agri-vista.git
 cd kisanAI
 cd kisanAI-agri-vista
