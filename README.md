@@ -91,7 +91,7 @@ Farmers often struggle to get real-time insights on soil conditions, crop select
 - **Farmer-Vendor Network**: Creates a seamless network for farmers to connect with vendors and buyers for their needs.
 - **Crop Lifecycle Support**: Offers full lifecycle guidance for crops to ensure success from planting to sale.
 
-## 💻 Installation
+## 💻 Installation:
 
 ### Prerequisites
 
